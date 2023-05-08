@@ -364,5 +364,5 @@ console.log(prueba3)
     return productToBuy;
    }
 
-   let prueba8 = getTheExpensiestThatICanBuy(products, 250);
+   let prueba8 = getTheExpensiestThatICanBuy(products, 1000);
    console.log(prueba8);
