@@ -1224,3 +1224,69 @@ const getUserByName = (users, name) => {
 }
 let user = getUserByName(users, "gallardo");
 console.log(user);
+
+console.log("-------------------------------------------------------------------------------------------------------------------");
+/**
+ *5. Poder buscar usuarios por nacionalidad
+ */
+
+const getUserNationality = (users, nationality) => {
+    let result = users.filter(item => {
+      return item.location.country.toLowerCase().includes(nationality.toLowerCase()); 
+    })
+    return result;
+}
+
+let filterByNationality = getUserNationality(users, "New Zealand" );
+console.log(filterByNationality);
+
+console.log("-------------------------------------------------------------------------------------------------------------------");
+
+/**
+ * Poder buscar usuarios por rango de edad
+ */
+
+const getUsersByAgeRange = (users, minAge, maxAge) => {
+  let result = users.filter(item => {
+    if(item.dob.age > minAge){
+      if(item.dob.age < maxAge){
+        return item;
+      }
+    }
+    return
+  })
+  return result;
+}
+
+let usersIntoAgeRage = getUsersByAgeRange(users, 15, 40);
+console.log(usersIntoAgeRage);
+
+console.log("-----------------------------------------------------------------------------------------------------------");
+
+/**
+ * 7. Obtener una lista con los códigos postales sin repetir de los usuarios
+ */
+
+const getZipCodes = users => {
+  let zipCodes = users.reduce((accum, item) => !accum.includes(item.location.postcode) ? [...accum, item.location.postcode] : null, [])
+  return zipCodes;
+}
+
+let usersZipCodes = getZipCodes(users);
+console.log(usersZipCodes);
+
+console.log("---------------------------------------------------------------------------------------------------------------------------");
+
+/**
+ * Obtener la edad promedio de nuestros usuarios
+ */
+
+const getAgeAverage =  users => {
+  let ageAverage = users.reduce((accum, item) => accum + item.dob.age, 0)
+  return ageAverage / users.length;
+}
+
+let ageAverage = getAgeAverage(users);
+console.log(ageAverage);
+
+document.get
